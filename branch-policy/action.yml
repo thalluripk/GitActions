@@ -15,8 +15,10 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: write-output "Hello ${{ inputs.branch-name }}"
+    - run: |
+        write-output "Hello ${{ inputs.branch-name }}"
       shell: pwsh
     - id: random-number-generator
-      run: write-output "::set-output name=rand::$(Get-Random)"
+      run: |
+        write-output "::set-output name=rand::$(Get-Random)"
       shell: pwsh
