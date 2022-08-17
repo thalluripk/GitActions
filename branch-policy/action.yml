@@ -18,5 +18,5 @@ runs:
     - run: write-output "Hello ${{ inputs.who-to-greet }}"
       shell: pwsh
     - id: random-number-generator
-      run: write-output "::set-output name=random-number::$(echo $RANDOM)"
+      run: write-output "::set-output name=random-number::$(Get-Random)"
       shell: pwsh
