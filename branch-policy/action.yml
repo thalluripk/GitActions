@@ -24,12 +24,12 @@ runs:
         write-output "Branch name comply with naming policy? $result"
 
         if($result -eq $true){
-          Write-Output "::notice title=Naming policy check::Success"
+          Write-Output "::notice title=Naming policy check::Branch name validation is Successful"
           write-output "::set-output name=branch-validation::Success"
           exit 0
         }
         else{
-          Write-Output "::error title=Naming policy check::Failed"
+          Write-Output "::error title=Naming policy check::Branch name doesn't comply with RAC naming policy"
           write-output "::set-output name=branch-validation::Failed"
           exit 1
         }
