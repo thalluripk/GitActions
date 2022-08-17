@@ -8,22 +8,26 @@ inputs:
     default: 'World'
 
 outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.rand }}
+  branch-validation:
+    description: "Branch validation output"
+    value: ${{ steps.validate-branch-name.outputs.branch-validation }}
     
 runs:
   using: "composite"
   steps:
-    - run: |
-        write-output "Hello ${{ inputs.branch-name }}"
+    - id: validate-branch-name
       shell: pwsh
-    - id: random-number-generator
       run: |
-        write-output "::set-output name=rand::$(Get-Random)"
-        Write-Output "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
-        Write-Output "::error file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
-        write-output "GitHub $($Env:GITHUB_REF)"
-        dir env: | fl
-        exit 0
-      shell: pwsh
+        $branch = "${{ inputs.branch-name }}"
+        write-output "Applying branching policy on $branch"
+        $result =  $branch -match "([a-z])+\/+([A-Z]{2,4}\-\d{2,5})+(\w)+""
+        write-output "Result $($result)"
+
+        if($result -eq $true){
+          write-output "::set-output name=branch-validation::Success"
+        }
+        else{
+          write-output "::set-output name=branch-validation::Failed"
+        }
+        
+      
