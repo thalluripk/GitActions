@@ -23,4 +23,5 @@ runs:
         write-output "::set-output name=rand::$(Get-Random)"
         Write-Output "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
         Write-Output "::error file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
+        exit 1
       shell: pwsh
