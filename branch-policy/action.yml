@@ -21,4 +21,5 @@ runs:
     - id: random-number-generator
       run: |
         write-output "::set-output name=rand::$(Get-Random)"
+        write-output "::error"
       shell: pwsh
