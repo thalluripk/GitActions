@@ -26,9 +26,11 @@ runs:
 
         if($result -eq $true){
           write-output "::set-output name=branch-validation::Success"
+          exit 0
         }
         else{
           write-output "::set-output name=branch-validation::Failed"
+          exit 1
         }
         
       
