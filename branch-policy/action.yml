@@ -24,5 +24,6 @@ runs:
         Write-Output "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
         Write-Output "::error file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
         write-output "GitHub $($Env:GITHUB_REF)"
+        dir env:
         exit 0
       shell: pwsh
