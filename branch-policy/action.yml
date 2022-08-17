@@ -24,10 +24,12 @@ runs:
         write-output "Branch name comply with naming policy? $result"
 
         if($result -eq $true){
+          Write-Output "::notice title=Naming policy check::Success"
           write-output "::set-output name=branch-validation::Success"
           exit 0
         }
         else{
+          Write-Output "::error title=Naming policy check::Failed"
           write-output "::set-output name=branch-validation::Failed"
           exit 1
         }
