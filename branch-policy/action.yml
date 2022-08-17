@@ -21,8 +21,7 @@ runs:
         $branch = "${{ inputs.branch-name }}"
         write-output "Applying branching policy on $branch"
         $result =  $branch -match "([a-z])+\/+([A-Z]{2,4}\-\d{2,5})+(\w)+"
-        $result
-        write-output "Result $result"
+        write-output "Branch name comply with naming policy? $result"
 
         if($result -eq $true){
           write-output "::set-output name=branch-validation::Success"
