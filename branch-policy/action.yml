@@ -1,12 +1,6 @@
 name: 'Branch Policy'
 description: 'This action validates the branch name complaince to RAC branching policy'
 
-inputs:
-  branch-name:  # id of input
-    description: 'branch name'
-    required: true
-    default: 'World'
-
 outputs:
   branch-validation:
     description: "Branch validation output"
